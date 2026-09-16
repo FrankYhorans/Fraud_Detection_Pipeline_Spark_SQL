@@ -1,0 +1,500 @@
+[2026-09-14T17:24:19.698+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-09-14T17:24:19.736+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:24:19.173149+00:00 [queued]>
+[2026-09-14T17:24:19.744+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:24:19.173149+00:00 [queued]>
+[2026-09-14T17:24:19.745+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2026-09-14T17:24:19.760+0000] {taskinstance.py:2327} INFO - Executing <Task(_PythonDecoratedOperator): clean> on 2026-09-14 17:24:19.173149+00:00
+[2026-09-14T17:24:19.771+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=207) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-09-14T17:24:19.769+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_pipeline', 'clean', 'manual__2026-09-14T17:24:19.173149+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline_dag.py', '--cfg-path', '/tmp/tmpeeqvq6tg']
+[2026-09-14T17:24:19.772+0000] {standard_task_runner.py:63} INFO - Started process 208 to run task
+[2026-09-14T17:24:19.772+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask clean
+[2026-09-14T17:24:19.844+0000] {task_command.py:426} INFO - Running <TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:24:19.173149+00:00 [running]> on host 4c167fdc3128
+[2026-09-14T17:24:19.963+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='fraud_pipeline' AIRFLOW_CTX_TASK_ID='clean' AIRFLOW_CTX_EXECUTION_DATE='2026-09-14T17:24:19.173149+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-14T17:24:19.173149+00:00'
+[2026-09-14T17:24:19.964+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-09-14T17:24:21.120+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:21 [INFO] src.cleaning.clean — Extraindo df_fraud_credit.zip...
+[2026-09-14T17:24:21.120+0000] {clean.py:33} INFO - Extraindo df_fraud_credit.zip...
+[2026-09-14T17:24:23.220+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:23 [INFO] src.cleaning.clean — Arquivo(s) extraído(s): df_fraud_credit.csv
+[2026-09-14T17:24:23.220+0000] {clean.py:50} INFO - Arquivo(s) extraído(s): df_fraud_credit.csv
+[2026-09-14T17:24:23.221+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:23 [INFO] src.cleaning.clean — Extração concluída.
+[2026-09-14T17:24:23.221+0000] {clean.py:51} INFO - Extração concluída.
+[2026-09-14T17:24:25.479+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:25 [INFO] src.cleaning.clean — 1,048,575 registros carregados.
+[2026-09-14T17:24:25.479+0000] {clean.py:62} INFO - 1,048,575 registros carregados.
+[2026-09-14T17:24:26.070+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:26 [INFO] src.cleaning.clean — dq_flag_amount:     5,641 registros
+[2026-09-14T17:24:26.069+0000] {clean.py:95} INFO - dq_flag_amount:     5,641 registros
+[2026-09-14T17:24:26.071+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:26 [INFO] src.cleaning.clean — dq_flag_risk_score: 5,695 registros
+[2026-09-14T17:24:26.071+0000] {clean.py:96} INFO - dq_flag_risk_score: 5,695 registros
+[2026-09-14T17:24:26.073+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:26 [INFO] src.cleaning.clean — dq_flag_region:     5,795 registros
+[2026-09-14T17:24:26.072+0000] {clean.py:97} INFO - dq_flag_region:     5,795 registros
+[2026-09-14T17:24:26.668+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:26 [INFO] src.cleaning.clean — 1 duplicata(s) removida(s).
+[2026-09-14T17:24:26.668+0000] {clean.py:129} INFO - 1 duplicata(s) removida(s).
+[2026-09-14T17:24:34.559+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:24:34 [ERROR] src.cleaning.clean — Erro inesperado ao salvar Silver.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1301, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 124, in start_connection
+    raise first_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 75, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 210, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 651, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 691, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 9000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 303, in send
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 858, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 812, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:9000 ssl:default [Connect call failed ('127.0.0.1', 9000)]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/src/cleaning/clean.py", line 144, in save_silver
+    df.to_parquet(output_path, index=False, engine="pyarrow",storage_options=get_storage_options())
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 2970, in to_parquet
+    return to_parquet(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 483, in to_parquet
+    impl.write(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 226, in write
+    self.api.parquet.write_table(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1883, in write_table
+    with ParquetWriter(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1041, in __exit__
+    self.close()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1116, in close
+    self.file_handle.close()
+  File "pyarrow/io.pxi", line 194, in pyarrow.lib.NativeFile.close
+  File "pyarrow/error.pxi", line 88, in pyarrow.lib.check_status
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2278, in close
+    self.flush(force=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2136, in flush
+    if self._upload_chunk(final=force) is not False:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2762, in _upload_chunk
+    self.commit()
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2788, in commit
+    write_result = self._call_s3("put_object", **kw, **match)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2621, in _call_s3
+    return self.fs.call_s3(method, self.s3_additional_kwargs, *kwarglist, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 118, in wrapper
+    return sync(self.loop, func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 103, in sync
+    raise return_result
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 56, in _runner
+    result[0] = await coro
+                ^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 464, in _call_s3
+    return await _error_wrapper(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 215, in _error_wrapper
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 169, in _error_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/context.py", line 36, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 431, in _make_api_call
+    http, parsed_response = await self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 457, in _make_request
+    return await self._endpoint.make_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 122, in _send_request
+    while await self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 282, in _needs_retry
+    responses = await self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/hooks.py", line 68, in _emit
+    response = await resolve_awaitable(handler(**kwargs))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 107, in _call
+    if await resolve_awaitable(self._checker(**checker_kwargs)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 126, in _call
+    should_retry = await self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 165, in _should_retry
+    return await resolve_awaitable(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 174, in _call
+    checker(attempt_number, response, caught_exception)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 203, in _do_get_response
+    http_response = await self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 308, in _send
+    return await self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 358, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "http://localhost:9000/silver/transactions_clean.parquet"
+[2026-09-14T17:24:34.549+0000] {clean.py:153} ERROR - Erro inesperado ao salvar Silver.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1301, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 124, in start_connection
+    raise first_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 75, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 210, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 651, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 691, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 9000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 303, in send
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 858, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 812, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:9000 ssl:default [Connect call failed ('127.0.0.1', 9000)]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/src/cleaning/clean.py", line 144, in save_silver
+    df.to_parquet(output_path, index=False, engine="pyarrow",storage_options=get_storage_options())
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 2970, in to_parquet
+    return to_parquet(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 483, in to_parquet
+    impl.write(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 226, in write
+    self.api.parquet.write_table(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1883, in write_table
+    with ParquetWriter(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1041, in __exit__
+    self.close()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1116, in close
+    self.file_handle.close()
+  File "pyarrow/io.pxi", line 194, in pyarrow.lib.NativeFile.close
+  File "pyarrow/error.pxi", line 88, in pyarrow.lib.check_status
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2278, in close
+    self.flush(force=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2136, in flush
+    if self._upload_chunk(final=force) is not False:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2762, in _upload_chunk
+    self.commit()
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2788, in commit
+    write_result = self._call_s3("put_object", **kw, **match)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2621, in _call_s3
+    return self.fs.call_s3(method, self.s3_additional_kwargs, *kwarglist, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 118, in wrapper
+    return sync(self.loop, func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 103, in sync
+    raise return_result
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 56, in _runner
+    result[0] = await coro
+                ^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 464, in _call_s3
+    return await _error_wrapper(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 215, in _error_wrapper
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 169, in _error_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/context.py", line 36, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 431, in _make_api_call
+    http, parsed_response = await self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 457, in _make_request
+    return await self._endpoint.make_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 122, in _send_request
+    while await self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 282, in _needs_retry
+    responses = await self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/hooks.py", line 68, in _emit
+    response = await resolve_awaitable(handler(**kwargs))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 107, in _call
+    if await resolve_awaitable(self._checker(**checker_kwargs)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 126, in _call
+    should_retry = await self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 165, in _should_retry
+    return await resolve_awaitable(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 174, in _call
+    checker(attempt_number, response, caught_exception)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 203, in _do_get_response
+    http_response = await self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 308, in _send
+    return await self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 358, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "http://localhost:9000/silver/transactions_clean.parquet"
+[2026-09-14T17:24:34.560+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-09-14T17:24:34.560+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1301, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 124, in start_connection
+    raise first_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 75, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohappyeyeballs/impl.py", line 210, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 651, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/selector_events.py", line 691, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 9000)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 303, in send
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 858, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/client.py", line 812, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiohttp/connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:9000 ssl:default [Connect call failed ('127.0.0.1', 9000)]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/fraud_pipeline_dag.py", line 17, in clean
+    run_clean()
+  File "/opt/airflow/src/cleaning/clean.py", line 166, in clean
+    save_silver(df,silver_folder)
+  File "/opt/airflow/src/cleaning/clean.py", line 144, in save_silver
+    df.to_parquet(output_path, index=False, engine="pyarrow",storage_options=get_storage_options())
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 2970, in to_parquet
+    return to_parquet(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 483, in to_parquet
+    impl.write(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parquet.py", line 226, in write
+    self.api.parquet.write_table(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1883, in write_table
+    with ParquetWriter(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1041, in __exit__
+    self.close()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pyarrow/parquet/core.py", line 1116, in close
+    self.file_handle.close()
+  File "pyarrow/io.pxi", line 194, in pyarrow.lib.NativeFile.close
+  File "pyarrow/error.pxi", line 88, in pyarrow.lib.check_status
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2278, in close
+    self.flush(force=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/spec.py", line 2136, in flush
+    if self._upload_chunk(final=force) is not False:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2762, in _upload_chunk
+    self.commit()
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2788, in commit
+    write_result = self._call_s3("put_object", **kw, **match)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 2621, in _call_s3
+    return self.fs.call_s3(method, self.s3_additional_kwargs, *kwarglist, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 118, in wrapper
+    return sync(self.loop, func, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 103, in sync
+    raise return_result
+  File "/home/airflow/.local/lib/python3.12/site-packages/fsspec/asyn.py", line 56, in _runner
+    result[0] = await coro
+                ^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 464, in _call_s3
+    return await _error_wrapper(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 215, in _error_wrapper
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3fs/core.py", line 169, in _error_wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/context.py", line 36, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 431, in _make_api_call
+    http, parsed_response = await self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/client.py", line 457, in _make_request
+    return await self._endpoint.make_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 122, in _send_request
+    while await self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 282, in _needs_retry
+    responses = await self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/hooks.py", line 68, in _emit
+    response = await resolve_awaitable(handler(**kwargs))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 107, in _call
+    if await resolve_awaitable(self._checker(**checker_kwargs)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 126, in _call
+    should_retry = await self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 165, in _should_retry
+    return await resolve_awaitable(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/retryhandler.py", line 174, in _call
+    checker(attempt_number, response, caught_exception)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 203, in _do_get_response
+    http_response = await self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/endpoint.py", line 308, in _send
+    return await self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/aiobotocore/httpsession.py", line 358, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "http://localhost:9000/silver/transactions_clean.parquet"
+[2026-09-14T17:24:34.576+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=fraud_pipeline, task_id=clean, execution_date=20260914T172419, start_date=20260914T172419, end_date=20260914T172434
+[2026-09-14T17:24:34.589+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 9 for task clean (Could not connect to the endpoint URL: "http://localhost:9000/silver/transactions_clean.parquet"; 208)
+[2026-09-14T17:24:34.638+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-09-14T17:24:34.658+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-14T17:24:34.662+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

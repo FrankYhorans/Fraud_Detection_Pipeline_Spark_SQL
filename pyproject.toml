@@ -1,0 +1,12 @@
+[project]
+name = "fraud-detection-pipeline"
+version = "0.1.0"
+description = "Pipeline ETL de detecção de fraudes em transações blockchain — Desafio Técnico Localiza&Co"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pyspark>=3.4.3",
+    "pyarrow>=15.0.0",
+    "pytest>=9.1.1",
+    "s3fs>=2024.1.0",
+]

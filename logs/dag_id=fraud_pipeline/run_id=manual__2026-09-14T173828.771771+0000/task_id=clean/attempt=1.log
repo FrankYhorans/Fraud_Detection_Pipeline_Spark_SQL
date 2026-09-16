@@ -1,0 +1,36 @@
+[2026-09-14T17:38:29.474+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-09-14T17:38:29.505+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:38:28.771771+00:00 [queued]>
+[2026-09-14T17:38:29.512+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:38:28.771771+00:00 [queued]>
+[2026-09-14T17:38:29.512+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2026-09-14T17:38:29.522+0000] {taskinstance.py:2327} INFO - Executing <Task(_PythonDecoratedOperator): clean> on 2026-09-14 17:38:28.771771+00:00
+[2026-09-14T17:38:29.528+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_pipeline', 'clean', 'manual__2026-09-14T17:38:28.771771+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline_dag.py', '--cfg-path', '/tmp/tmp44_qpawv']
+[2026-09-14T17:38:29.530+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=202) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-09-14T17:38:29.530+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask clean
+[2026-09-14T17:38:29.530+0000] {standard_task_runner.py:63} INFO - Started process 203 to run task
+[2026-09-14T17:38:29.581+0000] {task_command.py:426} INFO - Running <TaskInstance: fraud_pipeline.clean manual__2026-09-14T17:38:28.771771+00:00 [running]> on host 3434fbcb9640
+[2026-09-14T17:38:29.668+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='fraud_pipeline' AIRFLOW_CTX_TASK_ID='clean' AIRFLOW_CTX_EXECUTION_DATE='2026-09-14T17:38:28.771771+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-14T17:38:28.771771+00:00'
+[2026-09-14T17:38:29.669+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-09-14T17:38:30.641+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:30 [INFO] src.cleaning.clean — Extraindo df_fraud_credit.zip...
+[2026-09-14T17:38:30.641+0000] {clean.py:33} INFO - Extraindo df_fraud_credit.zip...
+[2026-09-14T17:38:32.788+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:32 [INFO] src.cleaning.clean — Arquivo(s) extraído(s): df_fraud_credit.csv
+[2026-09-14T17:38:32.788+0000] {clean.py:50} INFO - Arquivo(s) extraído(s): df_fraud_credit.csv
+[2026-09-14T17:38:32.789+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:32 [INFO] src.cleaning.clean — Extração concluída.
+[2026-09-14T17:38:32.789+0000] {clean.py:51} INFO - Extração concluída.
+[2026-09-14T17:38:35.154+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:35 [INFO] src.cleaning.clean — 1,048,575 registros carregados.
+[2026-09-14T17:38:35.153+0000] {clean.py:62} INFO - 1,048,575 registros carregados.
+[2026-09-14T17:38:35.854+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:35 [INFO] src.cleaning.clean — dq_flag_amount:     5,641 registros
+[2026-09-14T17:38:35.853+0000] {clean.py:95} INFO - dq_flag_amount:     5,641 registros
+[2026-09-14T17:38:35.855+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:35 [INFO] src.cleaning.clean — dq_flag_risk_score: 5,695 registros
+[2026-09-14T17:38:35.855+0000] {clean.py:96} INFO - dq_flag_risk_score: 5,695 registros
+[2026-09-14T17:38:35.856+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:35 [INFO] src.cleaning.clean — dq_flag_region:     5,795 registros
+[2026-09-14T17:38:35.856+0000] {clean.py:97} INFO - dq_flag_region:     5,795 registros
+[2026-09-14T17:38:36.491+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:36 [INFO] src.cleaning.clean — 1 duplicata(s) removida(s).
+[2026-09-14T17:38:36.491+0000] {clean.py:129} INFO - 1 duplicata(s) removida(s).
+[2026-09-14T17:38:37.749+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:38:37 [INFO] src.cleaning.clean — Salvo em: s3://silver/transactions_clean.parquet
+[2026-09-14T17:38:37.749+0000] {clean.py:145} INFO - Salvo em: s3://silver/transactions_clean.parquet
+[2026-09-14T17:38:37.768+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-09-14T17:38:37.769+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-09-14T17:38:37.786+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=fraud_pipeline, task_id=clean, execution_date=20260914T173828, start_date=20260914T173829, end_date=20260914T173837
+[2026-09-14T17:38:37.850+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-09-14T17:38:37.874+0000] {taskinstance.py:3482} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-09-14T17:38:37.876+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

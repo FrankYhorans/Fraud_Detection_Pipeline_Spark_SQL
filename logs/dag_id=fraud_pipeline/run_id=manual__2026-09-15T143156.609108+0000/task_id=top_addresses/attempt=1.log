@@ -1,0 +1,30 @@
+[2026-09-15T14:32:34.914+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-09-15T14:32:34.957+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_pipeline.top_addresses manual__2026-09-15T14:31:56.609108+00:00 [queued]>
+[2026-09-15T14:32:34.970+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_pipeline.top_addresses manual__2026-09-15T14:31:56.609108+00:00 [queued]>
+[2026-09-15T14:32:34.971+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2026-09-15T14:32:34.986+0000] {taskinstance.py:2327} INFO - Executing <Task(_PythonDecoratedOperator): top_addresses> on 2026-09-15 14:31:56.609108+00:00
+[2026-09-15T14:32:34.995+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_pipeline', 'top_addresses', 'manual__2026-09-15T14:31:56.609108+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline_dag.py', '--cfg-path', '/tmp/tmpvv60myta']
+[2026-09-15T14:32:34.998+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=830) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-09-15T14:32:34.998+0000] {standard_task_runner.py:91} INFO - Job 10: Subtask top_addresses
+[2026-09-15T14:32:34.998+0000] {standard_task_runner.py:63} INFO - Started process 831 to run task
+[2026-09-15T14:32:35.047+0000] {task_command.py:426} INFO - Running <TaskInstance: fraud_pipeline.top_addresses manual__2026-09-15T14:31:56.609108+00:00 [running]> on host c07451a93174
+[2026-09-15T14:32:35.132+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='fraud_pipeline' AIRFLOW_CTX_TASK_ID='top_addresses' AIRFLOW_CTX_EXECUTION_DATE='2026-09-15T14:31:56.609108+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-15T14:31:56.609108+00:00'
+[2026-09-15T14:32:35.133+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-09-15T14:32:45.825+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:45 [INFO] src.transformation.top_addresses — 1,048,574 registros lidos da camada Silver.
+[2026-09-15T14:32:45.824+0000] {top_addresses.py:45} INFO - 1,048,574 registros lidos da camada Silver.
+[2026-09-15T14:32:53.036+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:53 [INFO] src.transformation.top_addresses — Salvo em: s3a://gold/top_addresses.parquet
+[2026-09-15T14:32:53.036+0000] {top_addresses.py:51} INFO - Salvo em: s3a://gold/top_addresses.parquet
+[2026-09-15T14:32:54.082+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:54 [INFO] src.transformation.top_addresses — Top 3 endereços receptores:
+[2026-09-15T14:32:54.082+0000] {top_addresses.py:54} INFO - Top 3 endereços receptores:
+[2026-09-15T14:32:54.083+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:54 [INFO] src.transformation.top_addresses —   0xfe2650f030f2c966775e11009cb015e8852ecf4b | amount: 76,757.0 | timestamp: 2024-01-02 06:44:13
+[2026-09-15T14:32:54.083+0000] {top_addresses.py:56} INFO -   0xfe2650f030f2c966775e11009cb015e8852ecf4b | amount: 76,757.0 | timestamp: 2024-01-02 06:44:13
+[2026-09-15T14:32:54.084+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:54 [INFO] src.transformation.top_addresses —   0xe37126a5b0724737b516b97d3fb92311021e235d | amount: 76,716.0 | timestamp: 2023-12-29 11:17:48
+[2026-09-15T14:32:54.084+0000] {top_addresses.py:56} INFO -   0xe37126a5b0724737b516b97d3fb92311021e235d | amount: 76,716.0 | timestamp: 2023-12-29 11:17:48
+[2026-09-15T14:32:54.084+0000] {logging_mixin.py:188} INFO - 2026-09-15 14:32:54 [INFO] src.transformation.top_addresses —   0x646142948a3add1d05edb7789d73a14ef261e109 | amount: 76,667.0 | timestamp: 2024-01-01 16:14:14
+[2026-09-15T14:32:54.084+0000] {top_addresses.py:56} INFO -   0x646142948a3add1d05edb7789d73a14ef261e109 | amount: 76,667.0 | timestamp: 2024-01-01 16:14:14
+[2026-09-15T14:32:54.085+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-09-15T14:32:54.086+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-09-15T14:32:54.098+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=fraud_pipeline, task_id=top_addresses, execution_date=20260915T143156, start_date=20260915T143234, end_date=20260915T143254
+[2026-09-15T14:32:54.154+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-09-15T14:32:54.191+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-15T14:32:54.214+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

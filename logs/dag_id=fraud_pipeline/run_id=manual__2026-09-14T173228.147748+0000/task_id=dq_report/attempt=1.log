@@ -1,0 +1,69 @@
+[2026-09-14T17:32:37.598+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-09-14T17:32:37.628+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fraud_pipeline.dq_report manual__2026-09-14T17:32:28.147748+00:00 [queued]>
+[2026-09-14T17:32:37.636+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fraud_pipeline.dq_report manual__2026-09-14T17:32:28.147748+00:00 [queued]>
+[2026-09-14T17:32:37.637+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 1
+[2026-09-14T17:32:37.649+0000] {taskinstance.py:2327} INFO - Executing <Task(_PythonDecoratedOperator): dq_report> on 2026-09-14 17:32:28.147748+00:00
+[2026-09-14T17:32:37.656+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'fraud_pipeline', 'dq_report', 'manual__2026-09-14T17:32:28.147748+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/fraud_pipeline_dag.py', '--cfg-path', '/tmp/tmpxocmvq2q']
+[2026-09-14T17:32:37.660+0000] {standard_task_runner.py:91} INFO - Job 12: Subtask dq_report
+[2026-09-14T17:32:37.660+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=218) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-09-14T17:32:37.661+0000] {standard_task_runner.py:63} INFO - Started process 219 to run task
+[2026-09-14T17:32:37.731+0000] {task_command.py:426} INFO - Running <TaskInstance: fraud_pipeline.dq_report manual__2026-09-14T17:32:28.147748+00:00 [running]> on host 7a49688b1195
+[2026-09-14T17:32:37.826+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='fraud_pipeline' AIRFLOW_CTX_TASK_ID='dq_report' AIRFLOW_CTX_EXECUTION_DATE='2026-09-14T17:32:28.147748+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-09-14T17:32:28.147748+00:00'
+[2026-09-14T17:32:37.826+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-09-14T17:32:38.840+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:32:38 [INFO] src.data_quality.dq_report — 1,048,574 registros lidos da camada Silver.
+[2026-09-14T17:32:38.840+0000] {dq_report.py:29} INFO - 1,048,574 registros lidos da camada Silver.
+[2026-09-14T17:32:41.097+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:32:41 [INFO] src.data_quality.dq_report — Raw: 1,048,575 | Pós-limpeza: 1,048,574 | Duplicatas: 1
+[2026-09-14T17:32:41.097+0000] {dq_report.py:68} INFO - Raw: 1,048,575 | Pós-limpeza: 1,048,574 | Duplicatas: 1
+[2026-09-14T17:32:41.098+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:32:41 [INFO] src.data_quality.dq_report — Erros — amount: 5,641 | risk_score: 5,695 | region: 5,795
+[2026-09-14T17:32:41.098+0000] {dq_report.py:69} INFO - Erros — amount: 5,641 | risk_score: 5,695 | region: 5,795
+[2026-09-14T17:32:41.099+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:32:41 [INFO] src.data_quality.dq_report — Conformidade geral: 98.38% — dentro do esperado.
+[2026-09-14T17:32:41.099+0000] {dq_report.py:78} INFO - Conformidade geral: 98.38% — dentro do esperado.
+[2026-09-14T17:32:41.128+0000] {logging_mixin.py:188} INFO - 2026-09-14 17:32:41 [ERROR] src.data_quality.dq_report — Erro inesperado ao salvar o report.
+Traceback (most recent call last):
+  File "/opt/airflow/src/data_quality/dq_report.py", line 98, in save_report
+    endpoint_url=opts["endpoint_url"],
+                 ~~~~^^^^^^^^^^^^^^^^
+KeyError: 'endpoint_url'
+[2026-09-14T17:32:41.124+0000] {dq_report.py:112} ERROR - Erro inesperado ao salvar o report.
+Traceback (most recent call last):
+  File "/opt/airflow/src/data_quality/dq_report.py", line 98, in save_report
+    endpoint_url=opts["endpoint_url"],
+                 ~~~~^^^^^^^^^^^^^^^^
+KeyError: 'endpoint_url'
+[2026-09-14T17:32:41.129+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-09-14T17:32:41.129+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/fraud_pipeline_dag.py", line 32, in dq_report
+    run_report()
+  File "/opt/airflow/src/data_quality/dq_report.py", line 122, in run
+    save_report(metrics, report_path)
+  File "/opt/airflow/src/data_quality/dq_report.py", line 98, in save_report
+    endpoint_url=opts["endpoint_url"],
+                 ~~~~^^^^^^^^^^^^^^^^
+KeyError: 'endpoint_url'
+[2026-09-14T17:32:41.140+0000] {taskinstance.py:1205} INFO - Marking task as FAILED. dag_id=fraud_pipeline, task_id=dq_report, execution_date=20260914T173228, start_date=20260914T173237, end_date=20260914T173241
+[2026-09-14T17:32:41.152+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 12 for task dq_report ('endpoint_url'; 219)
+[2026-09-14T17:32:41.207+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-09-14T17:32:41.226+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-09-14T17:32:41.230+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
